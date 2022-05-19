@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Detail</title>
+</head>
+<body>
+    <!--主要就是为了显示这个博客的内容-->
+    <h3>title： {{ article.title }}</h3>
+    </br>
+    <h3>body: {{ article.content }}</h3>
+    <a href="{% url 'blog:article_edit_page' 0 %}">create</a>
+    <a href="{% url 'blog:article_edit_page' article.id %}">edit</a>
+    <a href="{% url 'blog:article_delete' article.id %}">delete</a>
+    <a href="{% url 'blog:index_page' %}">home</a>
+</body>
+</html>

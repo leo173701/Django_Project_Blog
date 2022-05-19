@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Edit</title>
+</head> <!---->
+<form action="{% url 'blog:article_edit_page_action' %}" method="post">   <!--这里是定义了一个form表单，用于填写博客标题、内容，并提交，在form中定义了一个action，这个是当提交按钮点击时触发的事件，暂时我们先空着。>-->
+    {% csrf_token %}   <!--这个必须添加，否则访问时报403错误-->
+    {% if article%}
+    <input type="hidden" name="article_id_hidden"  value="{{ article.id }}"> <!--设置隐藏内容-->
+        <label>Title
+            <input type="text" name="title" value = {{article.title}}>
+        </label>
+        </br> 
+        <label>Body
+            <input type="text" name="content" value = {{article.content}}>
+        </label>
+        </br>
+        <input type="submit" value="submit">
+    {% else %}
+        <input type ="hidden" name="article_id_hidden" value="0">
+        <label>Title
+            <input type="text" name="title">
+        </label>
+        </br> 
+        <label>Body
+            <input type="text" name="content">
+        </label>
+        </br>
+        <input type="submit" value="submit">
+    {% endif %}
+</form>
+<body>
+
+</body>
+</html>

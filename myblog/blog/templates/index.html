@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+<h3>Blog list：</h3>
+    {% for article in articles %}    <!--这是DTL的语法-->
+        <!--<a href="../article/{{ article.id }}"> {{ article.title }} </a>   --> <!--此处先不添加跳转页面，稍后再添加-->
+        <a href="{% url 'blog:article_page' article.id %}"> {{ article.title }} </a> 
+        <div>
+            <!-- {{article.content}} -->
+        </div>
+        <br/> 
+    {% endfor %}    <!--for循环必须以这个结尾-->
+    <a href="{% url 'blog:article_edit_page' 0 %}">Create a Blog</a>
+</body>  
+</html>
